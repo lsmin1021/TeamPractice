@@ -37,11 +37,10 @@ TEST_F(BrockerFixture, StockBrockerLogin) {
 }
 
 TEST_F(BrockerFixture, StockBrockerBuySucess) {
-	int price = 100;
-	int count = 3;
-
-	EXPECT_NO_THROW(app->buy(SAMPLE_STOCK_CODE, price, count));
+	EXPECT_CALL(mock, buy(SAMPLE_STOCK_CODE, 1000, 2)).Times(1);
+	app->buy(SAMPLE_STOCK_CODE, 1000, 2);
 }
+
 
 
 TEST_F(BrockerFixture, StockBrockerSell) {
