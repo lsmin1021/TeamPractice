@@ -26,6 +26,13 @@ TEST(StockBrocker, StockBrockerLogin) {
 }
 */
 
+TEST(StockBrocker, StockBrockerLoginFail) {
+	// TODO Login Fail
+	StockBrokerApp* app = nullptr;
+
+	EXPECT_THROW(app->login("idid", nullptr), std::exception);
+}
+
 int main() {
 	::testing::InitGoogleMock();
 	return RUN_ALL_TESTS();
