@@ -17,6 +17,7 @@ bool StockBrockerApp::login(string id, string pw) {
 	return true;
 };
 
+
 int StockBrockerApp::getPrice(string code) {
 	int ret = 0;
 
@@ -24,4 +25,11 @@ int StockBrockerApp::getPrice(string code) {
 	else ret = nemo.getMarketPrice(code, 0);
 
 	return ret;
+}
+
+void StockBrockerApp::buy(int code, int price, int quantity){
+	if (price <= 0 || quantity <= 0)
+	{
+		throw std::exception("Failed to buy - Invalid price or quantity");
+	}
 }

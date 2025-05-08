@@ -12,6 +12,7 @@ public:
 	void selectStockBrocker(string brocker);
 	bool login(string id, string pw);
 	int getPrice(string code);
+	void buy(int code, int price, int quantity);
 
 private:
 	string selectedBrocker;
