@@ -13,9 +13,17 @@ void StockBrockerApp::selectStockBrocker(string brocker) {
 void StockBrockerApp::login(string id, string pw) {
 	if (selectedBrocker == "Kiwer") kiwer.login(id, pw);
 	else nemo.certification(id, pw);
+
 };
 
 void StockBrockerApp::sell(string stockCode, int count, int price) {
 	if (selectedBrocker == "Kiwer") kiwer.sell(stockCode, count, price);
 	else nemo.sellingStock(stockCode, price, count);
+};
+
+void StockBrockerApp::buy(int code, int price, int quantity){
+	if (price <= 0 || quantity <= 0)
+	{
+		throw std::exception("Failed to buy - Invalid price or quantity");
+	}
 }
