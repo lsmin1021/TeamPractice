@@ -16,3 +16,10 @@ bool StockBrockerApp::login(string id, string pw) {
 	
 	return true;
 };
+
+void StockBrockerApp::buy(int code, int price, int quantity){
+	if (price <= 0 || quantity <= 0)
+	{
+		throw std::exception("Failed to buy - Invalid price or quantity");
+	}
+}
