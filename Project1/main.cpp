@@ -8,11 +8,12 @@ using namespace testing;
 class BrockerFixture : public Test {
 protected:
 	void SetUp() override {
-		app = new StockBrockerApp();
+		app = new StockBrockerApp(&mockDriver);
 	}
 
 public:
 	StockBrockerApp* app;
+	MockDriver mockDriver;
 
 	const string KIWER = "Kiwer";
 	const string NEMO = "Nemo";
@@ -20,6 +21,9 @@ public:
 	const string SAMPLE_ID = "idid";
 	const string SAMPLE_PW = "pwpw";
 	const string SAMPLE_STOCK_CODE = "123";
+
+	const int STOCK_PRICE = 100;
+	const int STOCK_COUNT = 3;
 };
 
 TEST_F(BrockerFixture, selectStockBrockerKiwer) {
@@ -35,22 +39,26 @@ TEST_F(BrockerFixture, StockBrockerLogin) {
 }
 
 TEST_F(BrockerFixture, StockBrockerBuySucess) {
-	int price = 100;
-	int count = 3;
-
-	EXPECT_NO_THROW(app->buy(SAMPLE_STOCK_CODE, price, count));
+	EXPECT_NO_THROW(app->buy(SAMPLE_STOCK_CODE, STOCK_PRICE, STOCK_COUNT));
 }
 
 
 TEST_F(BrockerFixture, StockBrockerSell) {
-	int price = 100;
-	int count = 3;
-
-	EXPECT_NO_THROW(app->sell(SAMPLE_STOCK_CODE, count, price));
+	EXPECT_NO_THROW(app->sell(SAMPLE_STOCK_CODE, STOCK_COUNT, STOCK_PRICE));
 }
 
 TEST_F(BrockerFixture, StockBrockerGetPrice) {
 	EXPECT_THAT(app->getPrice(SAMPLE_STOCK_CODE), Ge(0));
+}
+
+TEST_F(BrockerFixture, buyNiceTimingSucess) {
+	EXPECT_CALL(mockDriver, buy, (STOCK_PRICE, STOCK_COUNT), (override));
+	EXPECT_CALL(mockDriver, getPrice, (STOCK_PRICE), (override))
+		.Times(3)
+		.WillOnce(Return(100))
+		.WillOnce(Return(130))
+		.WillOnce(Return(150));
+	app->buyNiceTiming(STOCK_PRICE, STOCK_COUNT);
 }
 
 int main() {
