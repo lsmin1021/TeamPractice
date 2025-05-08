@@ -62,6 +62,18 @@ TEST_F(BrockerFixture, buyNiceTimingSucess) {
 	app->buyNiceTiming(SAMPLE_STOCK_CODE, STOCK_COUNT);
 }
 
+TEST_F(BrockerFixture, sellNiceTimingSucess) {
+	EXPECT_CALL(mock, sell, (string, int, int), (override)).Times(1);
+	EXPECT_CALL(mock, getPrice, (int), (override))
+		.Times(4)
+		.WillOnce(Return(160))
+		.WillOnce(Return(140))
+		.WillOnce(Return(110))
+		.WillRepeatedly(Return(100));
+
+	app->sellNiceTiming(SAMPLE_STOCK_CODE, STOCK_COUNT);
+}
+
 int main() {
 	::testing::InitGoogleMock();
 	return RUN_ALL_TESTS();

@@ -11,6 +11,8 @@ public:
 	StockBrockerApp() = default;
 	StockBrockerApp(DriverInterface* driver) : driver(driver){};
 	
+	void sellNiceTiming(string code, int cnt);
+
 	void selectStockBrocker(string brocker);
 	void login(string id, string pw);
 	void sell(string stockCode, int count, int price);
@@ -23,4 +25,5 @@ private:
 	//KiwerDriver kiwer;
 	//NemoDriver nemo;
 
+	bool isFalling(string code);
 };

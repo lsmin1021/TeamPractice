@@ -30,6 +30,27 @@ int StockBrockerApp::getPrice(string code) {
 	return driver->getPrice(code);
 }
 
+void StockBrockerApp::sellNiceTiming(string code, int cnt) {
+	if (true == isFalling(code)) {
+		driver->sell(code, cnt, driver->getPrice(code));
+	}
+}
+
+bool StockBrockerApp::isFalling(string code) {
+	int price = driver->getPrice(code);
+	int ret = true;
+
+	for (int i = 0; i < 2; i++) {
+		int nextPrice = driver->getPrice(code);
+
+		if (nextPrice > price) {
+			ret = false;
+		}
+	}
+
+	return ret;
+}
+
 void StockBrockerApp::buyNiceTiming(string code, int price)
 {
 	int prevPrice = driver->getPrice(code);
