@@ -45,6 +45,14 @@ TEST(StockBrocker, StockBrockerSell) {
 	EXPECT_NO_THROW(app->sell(code, price, count));
 }
 
+TEST(StockBrocker, StockBrockerGetPrice) {
+	StockBrockerApp* app = new StockBrockerApp();
+
+	int code = 123;
+	int expected = 100;
+	EXPECT_EQ(app->getPrice(code),expected);
+}
+
 int main() {
 	::testing::InitGoogleMock();
 	return RUN_ALL_TESTS();
