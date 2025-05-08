@@ -128,10 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="kiwer_api.cpp" />
+    <ClCompile Include="kiwer_driver.cpp" />
     <ClCompile Include="main.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">  %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="nemo_api.cpp" />
+    <ClCompile Include="nemo_driver.cpp" />
     <ClCompile Include="stock_brocker.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -140,7 +142,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="driver_interface.h" />
+    <ClInclude Include="kiwer_driver.h" />
     <ClInclude Include="mock_driver.h" />
+    <ClInclude Include="nemo_driver.h" />
     <ClInclude Include="stock_brocker.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

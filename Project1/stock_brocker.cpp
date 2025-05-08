@@ -21,6 +21,7 @@ void StockBrockerApp::buy(string code, int price, int quantity){
 	{
 		throw std::exception("Failed to buy - Invalid price or quantity");
 	}
+
 	driver->buy(code, price, quantity);
 }
 
