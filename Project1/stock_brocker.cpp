@@ -11,5 +11,8 @@ void StockBrockerApp::selectStockBrocker(string brocker) {
 }
 
 bool StockBrockerApp::login(string id, string pw) {
+	if (selectedBrocker == "Kiwer") kiwer.login(id, pw);
+	else nemo.certification(id, pw);
+	
 	return true;
 };
