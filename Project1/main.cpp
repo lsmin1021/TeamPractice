@@ -11,16 +11,16 @@ public:
 
 TEST(StockBrocker, selectStockBrockerKiwer) {
 	// TODO StockBrockerApp 개발
-	// StockBrokerApp* app = nullptr;
-	// 
-	// EXPECT_NO_THROW(app->selectStockBrocker("Kiwer"));
+	StockBrokerApp* app = nullptr;
+	
+	EXPECT_NO_THROW(app->selectStockBrocker("Kiwer"));
 }
 
 TEST(StockBrocker, selectStockBrockerNemo) {
 	// TODO StockBrockerApp 개발
-	// StockBrokerApp* app = nullptr;
-	// 
-	// EXPECT_NO_THROW(app.selectStockBrocker("Nemo"));
+	StockBrokerApp* app = nullptr;
+	
+	EXPECT_NO_THROW(app.selectStockBrocker("Nemo"));
 }
 
 
