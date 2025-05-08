@@ -23,6 +23,12 @@ TEST(StockBrocker, StockBrockerLogin) {
 	EXPECT_NO_THROW(app.login("idid","pwpw"));
 }
 
+TEST(StockBrocker, StockBrockerLoginFail) {
+	// TODO Login Fail
+	StockBrokerApp* app = nullptr;
+
+	EXPECT_THROW(app->login("idid", nullptr), std::exception);
+}
 
 int main() {
 	::testing::InitGoogleMock();
