@@ -23,9 +23,9 @@ TEST(StockBrocker, StockBrockerLogin) {
 	// TODO Login 기능
 	StockBrockerApp* app = new StockBrockerApp();
 	
-	EXPECT_EQ(true, app->login("idid", "pwpw"));
+	EXPECT_NO_THROW(app->login("idid", "pwpw"));
 }
-/*
+
 TEST(StockBrocker, StockBrockerBuySucess) {
 	// TODO 매수 기능
 	StockBrockerApp* app = new StockBrockerApp();
@@ -39,12 +39,12 @@ TEST(StockBrocker, StockBrockerBuySucess) {
 TEST(StockBrocker, StockBrockerSell) {
 	StockBrockerApp* app = new StockBrockerApp();
 
-	int code = 123;
+	string code = "123";
 	int price = 100;
 	int count = 3;
-	EXPECT_NO_THROW(app->sell(code, price, count));
+	EXPECT_NO_THROW(app->sell(code, count, price));
 }
-*/
+
 TEST(StockBrocker, StockBrockerGetPrice) {
 	StockBrockerApp* app = new StockBrockerApp();
 
