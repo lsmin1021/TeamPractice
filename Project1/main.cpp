@@ -8,10 +8,11 @@ using namespace testing;
 class BrockerFixture : public Test {
 protected:
 	void SetUp() override {
-		app = new StockBrockerApp();
+		app = new StockBrockerApp(&mock);
 	}
 
 public:
+	NiceMock<MockDriver> mock;
 	StockBrockerApp* app;
 
 	const string KIWER = "Kiwer";
@@ -31,6 +32,7 @@ TEST_F(BrockerFixture, selectStockBrockerNemo) {
 }
 
 TEST_F(BrockerFixture, StockBrockerLogin) {
+	EXPECT_CALL(mock, login(SAMPLE_ID, SAMPLE_PW));
 	EXPECT_NO_THROW(app->login(SAMPLE_ID, SAMPLE_PW));
 }
 
