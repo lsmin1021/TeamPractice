@@ -31,7 +31,7 @@ int StockBrockerApp::getPrice(string code) {
 	return ret;
 }
 
-void StockBrockerApp::buy(int code, int price, int quantity){
+void StockBrockerApp::buy(string code, int price, int quantity){
 	if (price <= 0 || quantity <= 0)
 	{
 		throw std::exception("Failed to buy - Invalid price or quantity");
