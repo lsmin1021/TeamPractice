@@ -4,53 +4,51 @@
 using std::string;
 using namespace testing;
 
-TEST(StockBrocker, selectStockBrockerKiwer) {
-	// TODO StockBrockerApp 개발
-	StockBrockerApp* app = new StockBrockerApp();
-	
-	EXPECT_NO_THROW(app->selectStockBrocker("Kiwer"));
+class BrockerFixture : public Test {
+protected:
+	void SetUp() override {
+		app = new StockBrockerApp();
+	}
+
+public:
+	StockBrockerApp* app;
+
+	const string KIWER = "Kiwer";
+	const string NEMO = "Nemo";
+
+	const string SAMPLE_ID = "idid";
+	const string SAMPLE_PW = "pwpw";
+	const string SAMPLE_STOCK_CODE = "123";
+};
+
+TEST_F(BrockerFixture, selectStockBrockerKiwer) {
+	EXPECT_NO_THROW(app->selectStockBrocker(KIWER));
 }
 
-TEST(StockBrocker, selectStockBrockerNemo) {
-	// TODO StockBrockerApp 개발
-	StockBrockerApp* app = new StockBrockerApp();
-	
-	EXPECT_NO_THROW(app->selectStockBrocker("Nemo"));
+TEST_F(BrockerFixture, selectStockBrockerNemo) {
+	EXPECT_NO_THROW(app->selectStockBrocker(NEMO));
 }
 
-
-TEST(StockBrocker, StockBrockerLogin) {
-	// TODO Login 기능
-	StockBrockerApp* app = new StockBrockerApp();
-	
-	EXPECT_NO_THROW(app->login("idid", "pwpw"));
+TEST_F(BrockerFixture, StockBrockerLogin) {
+	EXPECT_NO_THROW(app->login(SAMPLE_ID, SAMPLE_PW));
 }
 
-TEST(StockBrocker, StockBrockerBuySucess) {
-	// TODO 매수 기능
-	StockBrockerApp* app = new StockBrockerApp();
-
-	int code = 123;
+TEST_F(BrockerFixture, StockBrockerBuySucess) {
 	int price = 100;
 	int count = 3;
-	EXPECT_NO_THROW(app->buy(code, price, count));
+
+	EXPECT_NO_THROW(app->buy(SAMPLE_STOCK_CODE, price, count));
 }
 
-TEST(StockBrocker, StockBrockerSell) {
-	StockBrockerApp* app = new StockBrockerApp();
-
-	string code = "123";
+TEST_F(BrockerFixture, StockBrockerSell) {
 	int price = 100;
 	int count = 3;
-	EXPECT_NO_THROW(app->sell(code, count, price));
+
+	EXPECT_NO_THROW(app->sell(SAMPLE_STOCK_CODE, count, price));
 }
 
-TEST(StockBrocker, StockBrockerGetPrice) {
-	StockBrockerApp* app = new StockBrockerApp();
-
-	string code = "123";
-
-	EXPECT_THAT(app->getPrice(code), Gt(0));
+TEST_F(BrockerFixture, StockBrockerGetPrice) {
+	EXPECT_THAT(app->getPrice(SAMPLE_STOCK_CODE), Gt(0));
 }
 
 int main() {
