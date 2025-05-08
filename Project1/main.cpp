@@ -30,7 +30,7 @@ TEST(StockBrocker, StockBrockerLoginFail) {
 	// TODO Login Fail
 	StockBrokerApp* app = nullptr;
 
-	EXPECT_THROW(app->login("idid", nullptr), std::exception);
+	EXPECT_THROW(app->login("idid", ""), std::exception);
 }
 
 int main() {
