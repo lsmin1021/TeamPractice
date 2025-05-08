@@ -1,10 +1,13 @@
 #pragma once 
 
+#include <string>
+
+using std::string;
 class DriverInterface {
 public:
-    virtual bool login(int id, int pass) = 0;
-    virtual void buy(int code, int price, int quantity) = 0;
-    virtual void sell(int code, int price, int quantity) = 0;
-    virtual void getPrice(int code) = 0;
+    virtual bool login(int id, string pw) = 0;
+    virtual void buy(string code, int price, int quantity) = 0;
+    virtual void sell(string code, int price, int quantity) = 0;
+    virtual int getPrice(string code) = 0;
 
 };
