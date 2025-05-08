@@ -16,3 +16,12 @@ bool StockBrockerApp::login(string id, string pw) {
 	
 	return true;
 };
+
+int StockBrockerApp::getPrice(string code) {
+	int ret = 0;
+
+	if (selectedBrocker == "Kiwer") ret = kiwer.currentPrice(code);
+	else ret = nemo.getMarketPrice(code, 0);
+
+	return ret;
+}
