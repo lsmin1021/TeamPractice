@@ -40,8 +40,14 @@ TEST_F(BrockerFixture, StockBrockerLogin) {
 }
 
 TEST_F(BrockerFixture, StockBrockerBuySucess) {
+<<<<<<< HEAD
+	EXPECT_CALL(mock, buy(SAMPLE_STOCK_CODE, 1000, 2)).Times(1);
+	app->buy(SAMPLE_STOCK_CODE, 1000, 2);
+=======
 	EXPECT_NO_THROW(app->buy(SAMPLE_STOCK_CODE, STOCK_PRICE, STOCK_COUNT));
+>>>>>>> feature/unitTest2
 }
+
 
 
 TEST_F(BrockerFixture, StockBrockerSell) {
