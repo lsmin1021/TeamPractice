@@ -1,6 +1,7 @@
-﻿#include "gmock/gmock.h"
+#include "gmock/gmock.h"
 #include "stock_brocker.h"
 #include "string"
+#include "mock_driver.h"
 using std::string;
 using namespace testing;
 
@@ -39,6 +40,7 @@ TEST_F(BrockerFixture, StockBrockerBuySucess) {
 
 	EXPECT_NO_THROW(app->buy(SAMPLE_STOCK_CODE, price, count));
 }
+
 
 TEST_F(BrockerFixture, StockBrockerSell) {
 	int price = 100;
