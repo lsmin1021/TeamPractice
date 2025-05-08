@@ -1,36 +1,45 @@
 ﻿#include "gmock/gmock.h"
 #include "stock_brocker.h"
-
+#include "string"
+using std::string;
 using namespace testing;
+
+class MockDriver : public StockBrockerApp {
+public:
+	MOCK_METHOD(bool, login, (string, string), ());
+};
 
 TEST(StockBrocker, selectStockBrockerKiwer) {
 	// TODO StockBrockerApp 개발
-	StockBrockerApp* app = nullptr;
-
+	StockBrockerApp* app = new StockBrockerApp();
+	
 	EXPECT_NO_THROW(app->selectStockBrocker("Kiwer"));
 }
 
 TEST(StockBrocker, selectStockBrockerNemo) {
 	// TODO StockBrockerApp 개발
-	StockBrockerApp* app = nullptr;
-
+	StockBrockerApp* app = new StockBrockerApp();
+	
 	EXPECT_NO_THROW(app->selectStockBrocker("Nemo"));
 }
 
-/*
+
 TEST(StockBrocker, StockBrockerLogin) {
 	// TODO Login 기능
-	StockBrokerApp* app = nullptr;
-	
-	EXPECT_NO_THROW(app.login("idid","pwpw"));
+	MockDriver app;
+	EXPECT_CALL(app, login("idid", "pwpw"))
+		.WillRepeatedly(Return(true));
+
+	EXPECT_EQ(true, app.login("idid", "pwpw"));
 }
-*/
 
 TEST(StockBrocker, StockBrockerLoginFail) {
 	// TODO Login Fail
-	StockBrokerApp* app = nullptr;
+	MockDriver app;
+	EXPECT_CALL(app, login("idid", "pwpw"))
+		.WillRepeatedly(Return(false));
 
-	EXPECT_THROW(app->login("idid", nullptr), std::exception);
+	EXPECT_EQ(false, app.login("idid", "pwpw"));
 }
 
 int main() {

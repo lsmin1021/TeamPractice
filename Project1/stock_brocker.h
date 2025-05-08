@@ -9,6 +9,7 @@ public:
 	StockBrockerApp();
 
 	void selectStockBrocker(string brocker);
+	bool login(string id, string pw);
 
 private:
 	string selectedBrocker;

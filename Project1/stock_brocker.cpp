@@ -9,3 +9,7 @@ void StockBrockerApp::selectStockBrocker(string brocker) {
 
 	selectedBrocker = brocker;
 }
+
+bool StockBrockerApp::login(string id, string pw) {
+	return true;
+};
