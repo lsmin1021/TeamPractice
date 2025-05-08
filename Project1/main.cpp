@@ -26,7 +26,7 @@ TEST(StockBrocker, StockBrockerLogin) {
 	EXPECT_EQ(true, app->login("idid", "pwpw"));
 }
 
-TEST(StockBrocker, StockBrockerSellSucess) {
+TEST(StockBrocker, StockBrockerBuySucess) {
 	// TODO 매수 기능
 	StockBrockerApp* app = new StockBrockerApp();
 
@@ -36,7 +36,7 @@ TEST(StockBrocker, StockBrockerSellSucess) {
 	EXPECT_NO_THROW(app->buy(code, price, count));
 }
 
-TEST(StockBrocker, StockBrockerSellSucess) {
+TEST(StockBrocker, StockBrockerBuySucess) {
 	// TODO 매수 기능
 	StockBrockerApp* app = new StockBrockerApp();
 
