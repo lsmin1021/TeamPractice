@@ -36,16 +36,14 @@ TEST(StockBrocker, StockBrockerBuySucess) {
 	EXPECT_NO_THROW(app->buy(code, price, count));
 }
 
-TEST(StockBrocker, StockBrockerBuySucess) {
-	// TODO 매수 기능
+TEST(StockBrocker, StockBrockerSell) {
 	StockBrockerApp* app = new StockBrockerApp();
 
 	int code = 123;
-	int price = 0;
+	int price = 100;
 	int count = 3;
-	EXPECT_THROW(app->buy(code, price, count), std::exception);
+	EXPECT_NO_THROW(app->sell(code, price, count));
 }
-
 
 int main() {
 	::testing::InitGoogleMock();
