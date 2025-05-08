@@ -16,7 +16,7 @@ public:
 	void sell(string stockCode, int count, int price);
 	void buy(string code, int price, int quantity);
 	int getPrice(string code);
-
+	void buyNiceTiming(string code, int quantity);
 private:
 	string selectedBrocker;
 	DriverInterface* driver;
