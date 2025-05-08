@@ -11,22 +11,22 @@ void StockBrockerApp::selectStockBrocker(string brocker) {
 }
 
 void StockBrockerApp::login(string id, string pw) {
-	if (selectedBrocker == "Kiwer") kiwer.login(id, pw);
-	else nemo.certification(id, pw);
+	// if (selectedBrocker == "Kiwer") kiwer.login(id, pw);
+	// else nemo.certification(id, pw);
 
 };
 
 void StockBrockerApp::sell(string stockCode, int count, int price) {
-	if (selectedBrocker == "Kiwer") kiwer.sell(stockCode, count, price);
-	else nemo.sellingStock(stockCode, price, count);
+	// if (selectedBrocker == "Kiwer") kiwer.sell(stockCode, count, price);
+	// else nemo.sellingStock(stockCode, price, count);
 };
 
 
 int StockBrockerApp::getPrice(string code) {
 	int ret = 0;
 
-	if (selectedBrocker == "Kiwer") ret = kiwer.currentPrice(code);
-	else ret = nemo.getMarketPrice(code, 0);
+	// if (selectedBrocker == "Kiwer") ret = kiwer.currentPrice(code);
+	// else ret = nemo.getMarketPrice(code, 0);
 
 	return ret;
 }

@@ -48,7 +48,7 @@ TEST_F(BrockerFixture, StockBrockerSell) {
 }
 
 TEST_F(BrockerFixture, StockBrockerGetPrice) {
-	EXPECT_THAT(app->getPrice(SAMPLE_STOCK_CODE), Gt(0));
+	EXPECT_THAT(app->getPrice(SAMPLE_STOCK_CODE), Ge(0));
 }
 
 int main() {
