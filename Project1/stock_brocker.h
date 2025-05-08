@@ -10,6 +10,7 @@ public:
 	StockBrockerApp();
 
 	void selectStockBrocker(string brocker);
+	int getPrice(string code);
 	void login(string id, string pw);
 	void sell(string stockCode, int count, int price);
 	void buy(int code, int price, int quantity);

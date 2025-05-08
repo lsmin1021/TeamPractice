@@ -21,6 +21,16 @@ void StockBrockerApp::sell(string stockCode, int count, int price) {
 	else nemo.sellingStock(stockCode, price, count);
 };
 
+
+int StockBrockerApp::getPrice(string code) {
+	int ret = 0;
+
+	if (selectedBrocker == "Kiwer") ret = kiwer.currentPrice(code);
+	else ret = nemo.getMarketPrice(code, 0);
+
+	return ret;
+}
+
 void StockBrockerApp::buy(int code, int price, int quantity){
 	if (price <= 0 || quantity <= 0)
 	{

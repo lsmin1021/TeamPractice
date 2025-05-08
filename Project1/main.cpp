@@ -48,9 +48,9 @@ TEST(StockBrocker, StockBrockerSell) {
 TEST(StockBrocker, StockBrockerGetPrice) {
 	StockBrockerApp* app = new StockBrockerApp();
 
-	int code = 123;
-	int expected = 100;
-	EXPECT_EQ(app->getPrice(code),expected);
+	string code = "123";
+
+	EXPECT_THAT(app->getPrice(code), Gt(0));
 }
 
 int main() {
