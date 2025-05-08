@@ -1,23 +1,12 @@
 ﻿#include "gmock/gmock.h"
+#include "stock_brocker.h"
 #include "string"
 using std::string;
 using namespace testing;
 
-class StockBrockerInterface {
+class MockDriver : public StockBrockerApp {
 public:
-	// virtual void selectStockBrocker() = 0;
-	virtual bool login(string id, string pass) = 0;
-	// virtual void buy(int code, int price, int quantity) = 0;
-	// virtual void sell(int code, int price, int quantity) = 0;
-	// virtual void getPrice(int code) = 0;
-};
-
-class MockDriver : public StockBrockerInterface {
-public:
-	MOCK_METHOD(bool, login, (string, string), (override));
-
-
-	MockDriver() = default;
+	MOCK_METHOD(bool, login, (string, string), ());
 };
 
 TEST(StockBrocker, selectStockBrockerKiwer) {
@@ -34,15 +23,24 @@ TEST(StockBrocker, selectStockBrockerNemo) {
 	// EXPECT_NO_THROW(app.selectStockBrocker("Nemo"));
 }
 
+
 TEST(StockBrocker, StockBrockerLogin) {
 	// TODO Login 기능
 	MockDriver app;
 	EXPECT_CALL(app, login("idid", "pwpw"))
 		.WillRepeatedly(Return(true));
 
-	app.login("idid", "pwpw");
+	EXPECT_EQ(true, app.login("idid", "pwpw"));
 }
 
+TEST(StockBrocker, StockBrockerLoginFail) {
+	// TODO Login Fail
+	MockDriver app;
+	EXPECT_CALL(app, login("idid", "pwpw"))
+		.WillRepeatedly(Return(false));
+
+	EXPECT_EQ(false, app.login("idid", "pwpw"));
+}
 
 int main() {
 	::testing::InitGoogleMock();
