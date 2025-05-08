@@ -53,13 +53,13 @@ TEST_F(BrockerFixture, StockBrockerGetPrice) {
 }
 
 TEST_F(BrockerFixture, buyNiceTimingSucess) {
-	EXPECT_CALL(mockDriver, buy, (STOCK_PRICE, STOCK_COUNT), (override));
-	EXPECT_CALL(mockDriver, getPrice, (STOCK_PRICE), (override))
+	EXPECT_CALL(mock, buy, (SAMPLE_STOCK_CODE, STOCK_PRICE, STOCK_COUNT), (override));
+	EXPECT_CALL(mock, getPrice, (SAMPLE_STOCK_CODE), (override))
 		.Times(3)
 		.WillOnce(Return(100))
 		.WillOnce(Return(130))
 		.WillOnce(Return(150));
-	app->buyNiceTiming(STOCK_PRICE, STOCK_COUNT);
+	app->buyNiceTiming(SAMPLE_STOCK_CODE, STOCK_COUNT);
 }
 
 TEST_F(BrockerFixture, sellNiceTimingSucess) {

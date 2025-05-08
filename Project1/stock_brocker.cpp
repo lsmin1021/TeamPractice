@@ -50,3 +50,18 @@ bool StockBrockerApp::isFalling(string code) {
 
 	return ret;
 }
+
+void StockBrockerApp::buyNiceTiming(string code, int price)
+{
+	int prevPrice = driver->getPrice(code);
+	int currentPrice = 0;
+	// sleep(100ms);
+	for (int a = 0; a < 2; a++) {
+		currentPrice = driver->getPrice(code);
+		if (currentPrice < prevPrice) return;
+		prevPrice = currentPrice;
+		// sleep(100ms);
+	}
+	int quantity = price / currentPrice;
+	driver->buy(code, currentPrice, quantity);
+}
