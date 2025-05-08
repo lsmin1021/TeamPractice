@@ -29,3 +29,18 @@ int StockBrockerApp::getPrice(string code) {
 
 	return driver->getPrice(code);
 }
+
+void StockBrockerApp::buyNiceTiming(string code, int quantity)
+{
+	int prevPrice = driver->getPrice(code);
+	int currrentPrice = 0;
+	// sleep(100ms);
+	for (int a = 0; a < 2; a++) {
+		currrentPrice = driver->getPrice(code);
+		if (currrentPrice < prevPrice) return;
+		prevPrice = currrentPrice;
+		// sleep(100ms);
+	}
+		
+	driver->buy(code, currrentPrice, quantity);
+}
