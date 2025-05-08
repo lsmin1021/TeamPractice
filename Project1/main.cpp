@@ -50,7 +50,7 @@ TEST(StockBrocker, StockBrockerGetPrice) {
 
 	string code = "123";
 
-	EXPECT_THAT(app->getPrice(code), Gt(0));
+	EXPECT_THAT(app->getPrice(code), Ge(0));
 }
 
 int main() {

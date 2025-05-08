@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
-#include "kiwer_api.cpp"
-#include "nemo_api.cpp"
+#include "driver_interface.h"
 
 using std::string;
 
@@ -17,6 +16,5 @@ public:
 
 private:
 	string selectedBrocker;
-	KiwerAPI kiwer;
-	NemoAPI nemo;
+	DriverInterface* apiDriver;
 };
